@@ -6,9 +6,11 @@ import 'package:project/model/user_model.dart';
 class RestAPIService {
   Future<bool> addUserService(String email, String username) async {
     try {
-      final Map<String, dynamic> map = {"username": username, "email": email};
-      http.Response response = await http
-          .post(Uri.parse("http://10.0.2.2:8000/api/add-user"), body: map);
+      final Map<String, dynamic> map = {
+        "username": username,
+        "email": email
+      };
+      http.Response response = await http.post(Uri.parse("http://10.0.2.2:8000/api/add-user"), body: map);
       debugPrint("Response body: ${response.body}");
       if (response.statusCode == 200) {
         return true;
@@ -24,8 +26,7 @@ class RestAPIService {
 
   Future<UserModel> readUserService() async {
     try {
-      http.Response response =
-          await http.get(Uri.parse("http://10.0.2.2:8000/api/all-user"));
+      http.Response response = await http.get(Uri.parse("http://10.0.2.2:8000/api/all-user"));
       if (response.statusCode == 200) {
         _userModel = await compute(_pareJson, response.body);
       }
@@ -38,8 +39,7 @@ class RestAPIService {
 
   Future<bool> updateUserService(dynamic data) async {
     try {
-      http.Response response = await http
-          .put(Uri.parse("http://10.0.2.2:8000/api/update-user"), body: data);
+      http.Response response = await http.put(Uri.parse("http://10.0.2.2:8000/api/update-user"), body: data);
       debugPrint("Response Body: ${response.body}");
       if (response.statusCode == 200) {
         return true;
@@ -53,13 +53,13 @@ class RestAPIService {
 
   Future<bool> deleteUserSerice(String id) async {
     try {
-      http.Response response = await http.delete(
-          Uri.parse("http://10.0.2.2:8000/api/delete-user"),
-          body: {"id" : id});
+      http.Response response = await http.delete(Uri.parse("http://10.0.2.2:8000/api/delete-user"), body: {
+        "id": id
+      });
       debugPrint("Response Body: ${response.body}");
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         return true;
-      }else{
+      } else {
         return false;
       }
     } catch (err) {

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/constants/snack_bar.dart';
 import 'package:project/model/user_model.dart';
 
-import '../service/serivce.dart';
+import '../service/service.dart';
 
 abstract class LogicState {}
 
