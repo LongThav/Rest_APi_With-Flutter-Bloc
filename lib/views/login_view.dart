@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project/constants/snack_bar.dart';
 import 'package:project/views/create_account_view.dart';
+
+import '../logice/auth_logic.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -60,9 +64,23 @@ class _LoginViewState extends State<LoginView> {
           ),
           ElevatedButton(
             onPressed: () {
-              
+              if(_emailCtrl.text.isEmpty){
+                snackBar(context, "Please input your email");
+              }else if(_passwordCtrl.text.isEmpty){
+                snackBar(context, "Please input your password");
+              }else{
+                context.read<AuthLogic>().loginLogic(_emailCtrl.text, _passwordCtrl.text, context);
+              }
             },
-            child: const Text("Login"),
+            child: BlocBuilder<AuthLogic, AuthState>(
+              builder: (context, state){
+                if(state is LoginLoadingState){
+                  return state.isLoading ? const CircularProgressIndicator(color: Colors.white,) : const Text("Login");
+                }else{
+                  return const Text("Login");
+                }
+              }
+            )
           ),
           const SizedBox(
             height: 20,

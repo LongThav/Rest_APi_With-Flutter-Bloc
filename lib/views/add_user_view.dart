@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/constants/snack_bar.dart';
-import 'package:project/logice/logice.dart';
+import 'package:project/logice/logic.dart';
 
 class AddUserView extends StatefulWidget {
   const AddUserView({super.key});

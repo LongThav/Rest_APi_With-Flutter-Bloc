@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/logice/logice.dart';
+import 'package:project/db_helper/cache_token.dart';
+import 'package:project/logice/logic.dart';
 import 'package:project/model/user_model.dart';
 import 'package:project/views/add_user_view.dart';
 import 'package:project/views/update_user_view.dart';
@@ -13,6 +14,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final CacheToken _cacheToken = CacheToken();
   @override
   void initState() {
     context.read<LogicalService>().add(ReadUserEvent());
@@ -25,6 +27,14 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Display User"),
+        actions: [
+          IconButton(
+            onPressed: (){
+              _cacheToken.delelteAll(context);
+            }, 
+            icon: const Icon(Icons.logout)
+          )
+        ],
       ),
       body: _buildBody,
       floatingActionButton: FloatingActionButton(

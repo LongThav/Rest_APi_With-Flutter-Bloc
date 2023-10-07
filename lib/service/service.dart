@@ -69,10 +69,6 @@ class RestAPIService {
     }
   }
 
-
-  String urlLogin = "http://10.0.2.2:8000/api/login";
-  String urlSignUp = "http://10.0.2.2:8000/api/register";
-
 }
 
 UserModel _pareJson(String json) => UserModel.fromJson(jsonDecode(json));
