@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/service/service.dart';
 import 'package:project/views/splash_view.dart';
 
+
 import 'logice/logice.dart';
 
 void main() {

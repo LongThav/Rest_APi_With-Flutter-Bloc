@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:project/views/create_account_view.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class CreateAccountView extends StatefulWidget {
+  const CreateAccountView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<CreateAccountView> createState() => _CreateAccountViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _CreateAccountViewState extends State<CreateAccountView> {
+  final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _passwordCtrl = TextEditingController();
-
   bool _check = false;
 
   @override
   void dispose() {
+    _nameCtrl.dispose();
     _emailCtrl.dispose();
     _passwordCtrl.dispose();
     super.dispose();
@@ -25,13 +25,20 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
         centerTitle: true,
+        title: const Text("Create Account"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: TextField(
+              controller: _nameCtrl,
+              decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)), hintText: "Email"),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(15),
             child: TextField(
@@ -59,19 +66,9 @@ class _LoginViewState extends State<LoginView> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              
-            },
+            onPressed: () {},
             child: const Text("Login"),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const CreateAccountView()));
-              },
-              child: const Text("Create Account?"))
+          )
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:project/model/login_model.dart';
 import 'package:project/model/user_model.dart';
 
 class RestAPIService {
@@ -67,6 +68,11 @@ class RestAPIService {
       throw Exception(err);
     }
   }
+
+
+  String urlLogin = "http://10.0.2.2:8000/api/login";
+  String urlSignUp = "http://10.0.2.2:8000/api/register";
+
 }
 
 UserModel _pareJson(String json) => UserModel.fromJson(jsonDecode(json));
