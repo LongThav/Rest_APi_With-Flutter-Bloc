@@ -89,9 +89,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
             child: BlocBuilder<AuthLogic, AuthState>(
               builder: (context, state){
                 if(state is SignUpLoadingState){
-                  return state.isLoading? const CircularProgressIndicator(color: Colors.white,) : const Text("Login");
+                  return state.isLoading? const CircularProgressIndicator(color: Colors.white,) : const Text("SignUp");
                 }else{
-                  return const Text("Login");
+                  return const Text("SignUp");
                 }
               }
             )
